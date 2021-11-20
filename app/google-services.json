@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "399121548252",
+    "firebase_url": "https://hotelbookingsystemdb-default-rtdb.firebaseio.com",
+    "project_id": "hotelbookingsystemdb",
+    "storage_bucket": "hotelbookingsystemdb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:399121548252:android:02ae02e95de00dcc2ac519",
+        "android_client_info": {
+          "package_name": "com.example.hotelbookingsystem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "399121548252-fj9khha24ncliq0f94c2je7dd0405uj6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hotelbookingsystem",
+            "certificate_hash": "9d28dd684a34211b7d59e3103c235ad44820f659"
+          }
+        },
+        {
+          "client_id": "399121548252-ef924b9jipvkfikp5s3ibv0g1ommqp7l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAC_jGV0248C6zgTqbiRrgcJHANCm8iimQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "399121548252-ef924b9jipvkfikp5s3ibv0g1ommqp7l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

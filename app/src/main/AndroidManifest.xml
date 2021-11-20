@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.hotelbookingsystem">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:fullBackupOnly="true"
+        android:icon="@mipmap/ic_launcher2"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher2"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.HotelBookingSystem"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".ShowingRooms"
+            android:exported="false" />
+        <activity
+            android:name=".AddRooms"
+            android:exported="false" />
+        <activity
+            android:name=".reEditUserProfile"
+            android:exported="false" />
+        <activity
+            android:name=".showcustomerdetails"
+            android:exported="false" />
+        <activity
+            android:name=".reUserprofile"
+            android:exported="false" />
+        <activity
+            android:name=".Activityresetpassword"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity2demosssss"
+            android:exported="false" />
+        <activity
+            android:name=".ActivitySplash"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".PaymentActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity21"
+            android:exported="true" />
+        <activity
+            android:name=".EditAdminProfileActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ActivityreceptionistBoard"
+            android:exported="true" />
+        <activity
+            android:name=".ActivityAdminBoard"
+            android:exported="true" />
+        <activity
+            android:name=".EditUserProfile"
+            android:exported="true" />
+        <activity
+            android:name=".Userprofile"
+            android:exported="true" />
+        <activity
+            android:name=".ActivityOTP"
+            android:exported="true" />
+        <activity
+            android:name=".RegistrationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+
+        <meta-data
+            android:name="com.razorpay.ApiKey"
+            android:value="rzp_test_9e5AI2uXYf5RPo" />
+    </application>
+
+</manifest>

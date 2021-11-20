@@ -1,0 +1,73 @@
+<resources>
+    <string name="app_name">Hotel Booking</string>
+    <string name="image">image</string>
+    <string name="prompt_Address">Address</string>
+    <string name="prompt_date">Date</string>
+    <string name="prompt_otp">OTP</string>
+    <string name="prompt_email">Email</string>
+    <string name="hint_text">Select City</string>
+    <string name="prompt_password">Password</string>
+    <string name="login">Login</string>
+    <string name="create_new">Click here for register</string>
+    <string name="forget">Forget Password?</string>
+    <string name="not_register">already register?</string>
+    <string name="name">Name</string>
+    <string name="editprofile">Edit Profile</string>
+    <string name="ChangeProfile">Change Profile</string>
+    <string name="Update_Your_Profile">UPDATE YOUR PROFILE</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="register">Register</string>
+    <string name="name_error">Please enter your name</string>
+    <string name="address_error">Please enter your Address</string>
+    <string name="phone_error">Please enter your phone number</string>
+    <string name="date_error">Please enter your Date of Birth</string>
+    <string name="drop_error">Please select your city</string>
+    <string name="email_error">Please enter your email address</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="submit">Submit</string>
+    <string name="password_error">Please enter a password</string>
+    <string name="error_invalid_password">Please enter a minimum password of 6 characters</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="quantity_string_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5(Max)</item>
+    </string-array>
+
+    <string name="my_files">My Files</string>
+    <string name="shared">Shared</string>
+    <string name="openNavDrawer">Navigation Drawer Open</string>
+    <string name="closeNavDrawer">Navigation Drawer Close</string>
+
+
+    <string name="Deluxe">Deluxe Bad,</string>
+
+
+    <string name="Double">Double Bad, </string>
+
+
+    <string name="Single">Single Bad,</string>
+
+
+    <string name="orangevanilla">Vanilla Bean Crème Frappuccino® Blended Beverage. This rich and creamy blend of vanilla bean, milk and ice topped with
+    whipped cream takes va-va-vanilla flavor to another level.</string>
+
+
+    <string name="cappcuni">By Starbucks definition, a cappuccino is mostly milk foam, which weighs a lot less than milk. ... More specifically, a
+    cappuccino is made up of shots of espresso, half steamed milk (2% by default,) </string>
+
+
+    <string name="thaitea">Thai Tea is is made from strongly-brewed black tea, often spiced with ingredients such as star anise,
+    crushed tamarind, cardamom</string>
+    <string name="tea">Right next to water, tea is hailed as the most consumed drink in the world. Every single drop of tea
+    comes from the same type of plant</string>
+    <string name="bubbletea">Bubble Tea is the name given to the wide variety of refreshing flavoured
+    fruit teas and milk teas served ice cold or piping hot with chewy
+    tapioca balls that you suck up through a big fat straw! .</string>
+    <string name="match">Smooth and creamy matcha sweetened just right and served with steamed milk. This
+    favorite will transport your senses to pure green delight. </string>
+
+</resources>
