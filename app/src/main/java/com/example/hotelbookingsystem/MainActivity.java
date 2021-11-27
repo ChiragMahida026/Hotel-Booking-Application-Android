@@ -16,6 +16,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.example.hotelbookingsystem.news.MainActivityss;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthCredential;
@@ -85,7 +86,8 @@ public class MainActivity extends AppCompatActivity {
 //                Intent intent=new Intent(MainActivity.this,MainActivity21.class);
 //                startActivity(intent);
 
-                Intent intent=new Intent(MainActivity.this,ShowingRooms.class);
+//                Intent intent=new Intent(MainActivity.this,ShowingRooms.class);
+                Intent intent=new Intent(MainActivity.this, MainActivityss.class);
                 startActivity(intent);
             }
         });

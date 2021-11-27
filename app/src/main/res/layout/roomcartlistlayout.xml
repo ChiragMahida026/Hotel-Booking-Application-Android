@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="10dp"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -20,34 +21,36 @@
 
 
             <ImageView
-                android:id="@+id/coffeeImage"
+                android:id="@+id/cartImage"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                android:src="@drawable/sdfghjk" />
+                android:src="@drawable/ic_launcher_background" />
 
             <TextView
+                android:id="@+id/cartcoffeename"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/coffeeName"
-                android:text="Coffee Name"
+                android:layout_marginLeft="15dp"
 
-                android:textSize="18sp"
-                android:textStyle="bold"
+                android:layout_toRightOf="@id/cartImage"
+                android:text="Room Name"
                 android:textColor="@color/black"
-                android:layout_toRightOf="@id/coffeeImage"
-                android:layout_marginLeft="15dp"/>
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
 
             <TextView
-                android:id="@+id/coffeedetail"
+                android:id="@+id/orderdetail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/coffeeName"
+                android:layout_below="@id/cartcoffeename"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="8dp"
-                android:layout_toRightOf="@id/coffeeImage"
-                android:text="loremloremloremloremlorem" />
+                android:layout_toRightOf="@id/cartImage"
+                android:text="Total Price x Quantity"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
 
 
@@ -59,6 +62,7 @@
 
 
     </androidx.cardview.widget.CardView>
+
 
 
 

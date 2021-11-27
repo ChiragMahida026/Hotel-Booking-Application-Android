@@ -64,7 +64,7 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
                 usermail.setText(value.getString("email"));
             }
         });
-        editTextPayment.setText(CartFragment.getValues());
+//        editTextPayment.setText(CartFragment.getValues());
 
 
     }

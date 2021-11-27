@@ -31,7 +31,7 @@ public class myadapter extends FirebaseRecyclerAdapter<Noticedata,myadapter.myvi
             @Override
             public void onClick(View view) {
                 AppCompatActivity activity=(AppCompatActivity)view.getContext();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper,new descfragment(Noticedata.getTitle(),Noticedata.getEditdescs(),Noticedata.getImage())).addToBackStack(null).commit();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper,new descfragment(Noticedata.getTitle(),Noticedata.getEditdescs(),Noticedata.getEditroomava(),Noticedata.getEditprice(),Noticedata.getImage())).addToBackStack(null).commit();
             }
         });
     }

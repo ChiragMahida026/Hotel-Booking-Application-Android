@@ -1,12 +1,15 @@
-package com.example.hotelbookingsystem;
+package com.example.hotelbookingsystem.Model;
 
-public class Noticedata {
+
+
+public class roommodel {
+
     String title,editdescs,editroomava,editprice,image,data,time;
 
-    public Noticedata() {
+    public roommodel() {
     }
 
-    public Noticedata(String title,String editdescs,String editroomava,String editprice, String image, String data, String time) {
+    public roommodel(String title,String editdescs,String editroomava,String editprice, String image, String data, String time) {
 
         this.title = title;
         this.image = image;
@@ -74,4 +77,17 @@ public class Noticedata {
         this.time = time;
     }
 
+    @Override
+    public String toString() {
+        return "roommodel{" +
+                "title='" + title + '\'' +
+                ", editdescs='" + editdescs + '\'' +
+                ", editroomava='" + editroomava + '\'' +
+                ", editprice='" + editprice + '\'' +
+                ", image='" + image + '\'' +
+                ", data='" + data + '\'' +
+                ", time='" + time + '\'' +
+                '}';
+    }
 }
+

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navgraphv2"
+    app:startDestination="@id/recfragment">
+    <fragment
+        android:id="@+id/recfragment"
+        android:name="com.example.hotelbookingsystem.recfragment"
+        android:label="fragment_recfragment"
+        tools:layout="@layout/fragment_recfragment" >
+        <action
+            android:id="@+id/action_recfragment_to_descfragment"
+            app:destination="@id/descfragment" />
+        <action
+            android:id="@+id/action_recfragment_to_roomcartFragment"
+            app:destination="@id/roomcartFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/descfragment"
+        android:name="com.example.hotelbookingsystem.descfragment"
+        android:label="fragment_descfragment"
+        tools:layout="@layout/fragment_descfragment" >
+        <action
+            android:id="@+id/action_descfragment_to_recfragment"
+            app:destination="@id/recfragment" />
+        <argument
+            android:name="roomname"
+            app:argType="string"
+            android:defaultValue="null" />
+        <argument
+            android:name="roomdescription"
+            app:argType="string"
+            android:defaultValue="null" />
+        <argument
+            android:name="imageurl"
+            app:argType="string"
+            android:defaultValue="null" />
+        <argument
+            android:name="price"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="roomavailable"
+            app:argType="string"
+            android:defaultValue="null" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/roomcartFragment"
+        android:name="com.example.hotelbookingsystem.news.roomcartFragment"
+        android:label="fragment_roomcart"
+        tools:layout="@layout/fragment_roomcart" >
+        <action
+            android:id="@+id/action_roomcartFragment_to_recfragment"
+            app:destination="@id/recfragment" />
+    </fragment>
+</navigation>

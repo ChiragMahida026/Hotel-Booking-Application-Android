@@ -21,8 +21,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -35,12 +38,14 @@ import java.util.Calendar;
 public class AddRooms extends AppCompatActivity {
 
     ImageView view;
-    EditText text,editdesc;
+    EditText text,editdesc,editRoomavailable,editPrice;
     Button button;
+    FirebaseAuth fauth;
 
     private final int REQ=1;
     private Bitmap bitmap;
-    private DatabaseReference reference;
+//    private DatabaseReference reference;
+    FirebaseFirestore firestore;
     private StorageReference storageReference;
     String downloadUrl = "";
     private ProgressDialog pd;
@@ -51,11 +56,15 @@ public class AddRooms extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_rooms);
 
-        reference= FirebaseDatabase.getInstance().getReference();
+//        reference= FirebaseDatabase.getInstance().getReference();
+        fauth= FirebaseAuth.getInstance();
+        firestore=FirebaseFirestore.getInstance();
         storageReference= FirebaseStorage.getInstance().getReference();
         button=findViewById(R.id.btnsave);
         text=findViewById(R.id.editnames);
         editdesc=findViewById(R.id.editdesc);
+        editRoomavailable=findViewById(R.id.editRoomavailable);
+        editPrice=findViewById(R.id.editPrice);
         view=findViewById(R.id.uimages);
         pd=new ProgressDialog(this);
 
@@ -82,6 +91,18 @@ public class AddRooms extends AppCompatActivity {
                     editdesc.requestFocus();
 
                 }
+                else if(editRoomavailable.getText().toString().isEmpty())
+                {
+                    editRoomavailable.setError("Empty");
+                    editRoomavailable.requestFocus();
+
+                }
+                else if(editPrice.getText().toString().isEmpty())
+                {
+                    editPrice.setError("Empty");
+                    editPrice.requestFocus();
+
+                }
                 else if(bitmap == null)
                 {
                     uploadData();
@@ -96,11 +117,16 @@ public class AddRooms extends AppCompatActivity {
     }
 
     private void uploadData() {
-        reference=reference.child("Notice");
-        final String uniqueKey=reference.push().getKey();
+
+
+//        reference=reference.child("Notice");
+        firestore.collection("Notice").get();
 
         String title=text.getText().toString();
         String editdescs=editdesc.getText().toString();
+
+        String editroomava=editRoomavailable.getText().toString();
+        String editprice=editPrice.getText().toString();
 
         Calendar calendar=Calendar.getInstance();
         SimpleDateFormat dateFormat=new SimpleDateFormat("dd-MM-yy");
@@ -110,20 +136,22 @@ public class AddRooms extends AppCompatActivity {
         SimpleDateFormat dateFormat1=new SimpleDateFormat("hh:mm a");
         String time=dateFormat1.format(calendar1.getTime());
 
-        Noticedata noticedata=new Noticedata(title,editdescs,downloadUrl,date,time,uniqueKey);
+        Noticedata noticedata=new Noticedata(title,editdescs,editroomava,editprice,downloadUrl,date,time);
 
-        reference.child(uniqueKey).setValue(noticedata).addOnSuccessListener(new OnSuccessListener<Void>() {
+
+        firestore.collection("Notice").add(noticedata).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
-            public void onSuccess(Void unused) {
+            public void onSuccess(DocumentReference documentReference) {
                 pd.dismiss();
-                Toast.makeText(AddRooms.this, "Dones", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddRooms.this, "Room added Sucessfully", Toast.LENGTH_SHORT).show();
 
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 pd.dismiss();
-                Toast.makeText(AddRooms.this, "Wrong 2", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddRooms.this, "Something Wrong!", Toast.LENGTH_SHORT).show();
+
             }
         });
     }

@@ -3,6 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/activity_activityreceptionist_board.xml" value="0.25" />
+        <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/activity_activityresetpassword.xml" value="0.25" />
+        <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/activity_add_rooms.xml" value="0.25" />
+        <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/activity_admin_board.xml" value="0.25" />
+        <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/activity_edit_admin_profile.xml" value="0.25" />
+        <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/activity_edit_user_profile.xml" value="0.25" />
+        <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/activity_loginn.xml" value="0.25" />
+        <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/activity_main_activityss.xml" value="0.25" />
+        <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/fragment_recfragment.xml" value="0.1983695652173913" />
+        <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/singlerowdesign.xml" value="0.25" />
         <entry key="..\:/Users/Dhruv/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/drawable/bg_btn.xml" value="0.2203125" />
         <entry key="..\:/Users/Dhruv/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/drawable/cut_card_background.xml" value="0.2203125" />
         <entry key="..\:/Users/Dhruv/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/drawable/cut_card_background2.xml" value="0.2203125" />
@@ -44,6 +54,41 @@
         <entry key="..\:/Users/Dhruv/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/note_item.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Dhruv/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/singlerowdesign.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Dhruv/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/menu/new_note_menu.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/nano/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/activity_activityreceptionist_board.xml" value="0.25" />
+        <entry key="..\:/Users/nano/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/activity_activityresetpassword.xml" value="0.25" />
+        <entry key="..\:/Users/nano/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/activity_add_rooms.xml" value="0.25" />
+        <entry key="..\:/Users/nano/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/activity_admin_board.xml" value="0.25" />
+        <entry key="..\:/Users/nano/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/activity_edit_admin_profile.xml" value="0.25" />
+        <entry key="..\:/Users/nano/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/activity_edit_user_profile.xml" value="0.13125" />
+        <entry key="..\:/Users/nano/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/activity_loginn.xml" value="0.25" />
+        <entry key="..\:/Users/nano/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/activity_main.xml" value="0.13125" />
+        <entry key="..\:/Users/nano/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/activity_main2.xml" value="0.1" />
+        <entry key="..\:/Users/nano/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/activity_main21.xml" value="0.25" />
+        <entry key="..\:/Users/nano/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/activity_main_activity2demosssss.xml" value="0.25" />
+        <entry key="..\:/Users/nano/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/activity_main_activitys.xml" value="0.1" />
+        <entry key="..\:/Users/nano/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/activity_main_activityss.xml" value="0.25" />
+        <entry key="..\:/Users/nano/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/activity_otp.xml" value="0.25" />
+        <entry key="..\:/Users/nano/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/activity_payment.xml" value="0.25" />
+        <entry key="..\:/Users/nano/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/activity_re_edit_user_profile.xml" value="0.25" />
+        <entry key="..\:/Users/nano/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/activity_re_userprofile.xml" value="0.25" />
+        <entry key="..\:/Users/nano/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/activity_registration.xml" value="0.25" />
+        <entry key="..\:/Users/nano/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/activity_showcustomerdetails.xml" value="0.21603260869565216" />
+        <entry key="..\:/Users/nano/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/activity_showing_rooms.xml" value="0.21603260869565216" />
+        <entry key="..\:/Users/nano/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/activity_splash.xml" value="0.25" />
+        <entry key="..\:/Users/nano/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/activity_userprofile.xml" value="0.20364583333333333" />
+        <entry key="..\:/Users/nano/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/cartlist.xml" value="0.25" />
+        <entry key="..\:/Users/nano/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/cartlistlayout.xml" value="0.25" />
+        <entry key="..\:/Users/nano/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/coffeeliststyle.xml" value="0.25" />
+        <entry key="..\:/Users/nano/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/fragment_all_coffee_list.xml" value="0.25" />
+        <entry key="..\:/Users/nano/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/fragment_all_room_list.xml" value="0.25" />
+        <entry key="..\:/Users/nano/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/fragment_descfragment.xml" value="0.25" />
+        <entry key="..\:/Users/nano/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/fragment_recfragment.xml" value="0.25" />
+        <entry key="..\:/Users/nano/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/fragment_room_detail.xml" value="0.25" />
+        <entry key="..\:/Users/nano/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/fragment_roomcart.xml" value="0.25" />
+        <entry key="..\:/Users/nano/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/note_item.xml" value="0.25" />
+        <entry key="..\:/Users/nano/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/roomcartlistlayout.xml" value="0.25" />
+        <entry key="..\:/Users/nano/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/roomlisttype.xml" value="0.25" />
+        <entry key="..\:/Users/nano/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/layout/singlerowdesign.xml" value="0.25" />
       </map>
     </option>
   </component>

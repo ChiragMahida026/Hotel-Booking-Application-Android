@@ -1,52 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="10dp"
     tools:context=".descfragment">
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        app:cardElevation="8dp"
+        app:cardCornerRadius="6dp"
+        android:layout_centerInParent="true"
+        android:layout_margin="10dp">
 
-        <ImageView
-            android:id="@+id/imagegholder"
-            android:layout_marginTop="40dp"
-            android:layout_width="240dp"
-            android:layout_height="228dp"
-            android:src="@color/common_google_signin_btn_text_dark_disabled"
-            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imagegholder"
+                android:layout_width="match_parent"
+                android:layout_height="290dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/ic_launcher_background" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_below="@id/imagegholder"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:text="Room Name"
+            android:textColor="@color/black"
+            android:textSize="20sp"
             android:id="@+id/nameholder"
-            android:text="Candidate Name"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:textColor="#000"/>
+           />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:id="@+id/courseholder"
-            android:text="Candidate Course"
-            android:textSize="25sp"
-            android:textColor="#000"/>
+            <TextView
+                android:id="@+id/courseholder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/nameholder"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="cofee detail" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:id="@+id/emailholder"
-            android:text="Candidate Email"
-            android:textSize="25sp"
-            android:textColor="#000"/>
+            <TextView
+                android:id="@+id/emailholder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/courseholder"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="cofee detail" />
+
+            <TextView
+                android:id="@+id/roomprice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/emailholder"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="cofee detail" />
+
+            <LinearLayout
+                android:id="@+id/linear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/roomprice"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:text="-"
+                    android:id="@+id/decrementcoffee"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:id="@+id/quantityDETAILnUMBER"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"/>
+
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:text="+"
+                    android:id="@+id/incrementcoffee"/>
 
     </LinearLayout>
 
-</FrameLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/linear"
+                android:id="@+id/orderINFO"
+                android:textStyle="italic"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:layout_marginTop="20dp"
+                android:text="Total is "/>
+
+
+            <Button
+                android:id="@+id/orderdetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/orderINFO"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="@android:color/holo_red_dark"
+                android:text="BOOK" />
+
+</RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

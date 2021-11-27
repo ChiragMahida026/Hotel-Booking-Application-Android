@@ -33,7 +33,6 @@ public class Userprofile extends AppCompatActivity {
     String userId;
     Button editbtn;
     ImageView profileImage;
-    StorageReference storageReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,16 +48,8 @@ public class Userprofile extends AppCompatActivity {
 
         fAuth = FirebaseAuth.getInstance();
         fstore = FirebaseFirestore.getInstance();
-        storageReference = FirebaseStorage.getInstance().getReference();
-        editbtn = findViewById(R.id.editbtn);
 
-        StorageReference profileRef = storageReference.child("users/" + fAuth.getCurrentUser().getUid() + "/profile.jpg");
-        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Picasso.get().load(uri).into(profileImage);
-            }
-        });
+        editbtn = findViewById(R.id.editbtn);
 
         userId = fAuth.getCurrentUser().getUid();
         DocumentReference documentReference = fstore.collection("users").document(userId);

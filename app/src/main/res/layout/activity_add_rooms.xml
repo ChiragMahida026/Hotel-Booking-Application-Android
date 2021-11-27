@@ -10,14 +10,13 @@
     tools:context=".AddRooms">
 
     <androidx.cardview.widget.CardView
-        xmlns:Card_View="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="5dp"
         android:padding="10dp"
-        Card_View:cardCornerRadius="5dp"
-        Card_View:cardElevation="5dp">
+        app:cardCornerRadius="5dp"
+        app:cardElevation="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,7 +55,8 @@
                     android:inputType="textNoSuggestions"
                     android:maxLines="1"
                     android:paddingStart="5dp"
-                    android:singleLine="true"/>
+                    android:singleLine="true"
+                    tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -74,10 +74,41 @@
                     android:inputType="textNoSuggestions"
                     android:maxLines="1"
                     android:paddingStart="5dp"
-                    android:singleLine="true"/>
+                    android:singleLine="true"
+                    tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
 
+                <EditText
+                    android:id="@+id/editPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="Room Price"
+                    android:inputType="number"
+                    android:paddingStart="5dp"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
+                <EditText
+                    android:id="@+id/editRoomavailable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="Total Room available"
+                    android:inputType="number"
+                    android:paddingStart="5dp"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
 
 
             <Button
