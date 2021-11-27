@@ -16,6 +16,9 @@
         android:theme="@style/Theme.HotelBookingSystem"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".PaymentlistView"
+            android:exported="false" />
+        <activity
             android:name=".news.MainActivityss"
             android:exported="false" />
         <activity

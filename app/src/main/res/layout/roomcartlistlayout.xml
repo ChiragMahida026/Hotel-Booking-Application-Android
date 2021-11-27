@@ -52,9 +52,17 @@
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
-
+            <Button
+                android:id="@+id/removecart"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/orderdetail"
+                android:layout_marginLeft="130dp"
+                android:text="Remove"
+                app:iconTint="@color/colorAccent" />
 
         </RelativeLayout>
+
 
 
 

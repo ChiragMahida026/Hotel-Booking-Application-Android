@@ -7,6 +7,12 @@
     android:padding="10dp"
     tools:context=".descfragment">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        >
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,18 +32,17 @@
                 android:layout_marginTop="20dp"
                 android:src="@drawable/ic_launcher_background" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/imagegholder"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="10dp"
-            android:text="Room Name"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:id="@+id/nameholder"
-           />
+            <TextView
+                android:id="@+id/nameholder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imagegholder"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                android:text="Room Name"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/courseholder"
@@ -102,19 +107,31 @@
                     android:text="+"
                     android:id="@+id/incrementcoffee"/>
 
+
+
     </LinearLayout>
 
-            <TextView
+            <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
                 android:layout_below="@+id/linear"
+                android:id="@+id/checkbox1"
+                android:layout_marginLeft="20dp"
+                android:text="Hello"
+                android:textColor="@color/black"
+                />
+
+            <TextView
                 android:id="@+id/orderINFO"
-                android:textStyle="italic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/checkbox1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="Total is "
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:layout_marginTop="20dp"
-                android:text="Total is "/>
+                android:textStyle="italic" />
 
 
             <Button
@@ -131,5 +148,6 @@
 </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
+    </ScrollView>
 
 </RelativeLayout>

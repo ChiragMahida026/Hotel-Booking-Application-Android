@@ -9,10 +9,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.hotelbookingsystem.news.roomcartFragment;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -26,6 +30,9 @@ import com.razorpay.PaymentResultListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class PaymentActivity extends AppCompatActivity implements PaymentResultListener {
 
     private Button buttonConfirmOrder;
@@ -34,6 +41,7 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
     FirebaseAuth fAuth;
     FirebaseFirestore fstore;
     String userId;
+    String namesss,emailsss,payment;
 
 
     @Override
@@ -64,7 +72,7 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
                 usermail.setText(value.getString("email"));
             }
         });
-//        editTextPayment.setText(CartFragment.getValues());
+        editTextPayment.setText(roomcartFragment.getValues());
 
 
     }
@@ -99,7 +107,7 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
             options.put("image", "https://rzp-mobile.s3.amazonaws.com/images/rzp.png");
             options.put("currency", "INR");
 
-            String payment = editTextPayment.getText().toString();
+             payment = editTextPayment.getText().toString();
 
             double total = Double.parseDouble(payment);
             total = total * 100;
@@ -107,8 +115,8 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
 
             JSONObject preFill = new JSONObject();
 
-            String namesss=userphone.getText().toString();
-            String emailsss=usermail.getText().toString();
+            namesss=userphone.getText().toString();
+            emailsss=usermail.getText().toString();
 
             preFill.put("email", emailsss);
             preFill.put("contact",namesss );
@@ -126,6 +134,15 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
 
         startActivity(new Intent(getApplicationContext(),MainActivity.class));
         Toast.makeText(this, "Payment successfully done! ", Toast.LENGTH_SHORT).show();
+
+
+                    DocumentReference documentReference = fstore.collection("Payments").document(fAuth.getCurrentUser().getUid());
+                    Map<String, Object> payments = new HashMap<>();
+                    payments.put("PaymentId",s);
+                    payments.put("Payment",payment);
+                    payments.put("emails",emailsss);
+                    payments.put("name",namesss);
+                    documentReference.set(payments);
 
     }
 

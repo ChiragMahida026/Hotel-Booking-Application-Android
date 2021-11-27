@@ -1,45 +1,80 @@
 package com.example.hotelbookingsystem;
 
+import com.google.firebase.firestore.DocumentId;
+
 public class Noticedata {
-    String title,editdescs,editroomava,editprice,image,data,time;
+
+    @DocumentId
+    String roomid;
+    int editroomava, editprice;
+    int quantity;
+    String title, editdescs, image, data, time;
 
     public Noticedata() {
     }
 
-    public Noticedata(String title,String editdescs,String editroomava,String editprice, String image, String data, String time) {
-
+    public Noticedata(String roomid, int editroomava, int editprice, int quantity, String title, String editdescs, String image, String data, String time) {
+        this.roomid = roomid;
+        this.editroomava = editroomava;
+        this.editprice = editprice;
+        this.quantity = quantity;
         this.title = title;
+        this.editdescs = editdescs;
         this.image = image;
         this.data = data;
         this.time = time;
-        this.editdescs=editdescs;
-        this.editroomava=editroomava;
-        this.editprice=editprice;
     }
 
+    public Noticedata(int editroomava, int editprice, int quantity, String title, String editdescs, String image, String data, String time) {
+        this.editroomava = editroomava;
+        this.editprice = editprice;
+        this.quantity = quantity;
+        this.title = title;
+        this.editdescs = editdescs;
+        this.image = image;
+        this.data = data;
+        this.time = time;
+    }
 
-    public String getEditroomava() {
+    public Noticedata(String title, String editdescs, String editroomava, String editprice, String downloadUrl, String date, String time) {
+        this.quantity = quantity;
+        this.title = title;
+        this.editdescs = editdescs;
+        this.image = image;
+        this.data = data;
+        this.time = time;
+    }
+
+    public String getRoomid() {
+        return roomid;
+    }
+
+    public void setRoomid(String roomid) {
+        this.roomid = roomid;
+    }
+
+    public int getEditroomava() {
         return editroomava;
     }
 
-    public void setEditroomava(String editroomava) {
+    public void setEditroomava(int editroomava) {
         this.editroomava = editroomava;
     }
 
-    public String getEditprice() {
+    public int getEditprice() {
         return editprice;
     }
 
-    public void setEditprice(String editprice) {
+    public void setEditprice(int editprice) {
         this.editprice = editprice;
     }
 
-    public String getEditdescs() {
-        return editdescs;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setEditdescs(String editdescs) {
-        this.editdescs = editdescs;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public String getTitle() {
@@ -48,6 +83,14 @@ public class Noticedata {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getEditdescs() {
+        return editdescs;
+    }
+
+    public void setEditdescs(String editdescs) {
+        this.editdescs = editdescs;
     }
 
     public String getImage() {
@@ -73,5 +116,5 @@ public class Noticedata {
     public void setTime(String time) {
         this.time = time;
     }
-
 }
+

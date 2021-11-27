@@ -30,78 +30,13 @@
         android:rowCount="3"
         >
         <androidx.cardview.widget.CardView
-
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_gravity="fill"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_row="0"
-            android:layout_column="0"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="8dp"
-            app:cardUseCompatPadding="true">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:orientation="vertical"
-                android:gravity="center">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ieutyeuityeiutiuet"
-                    />
-
-
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardroombook"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_gravity="fill"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_row="0"
-            android:layout_column="1"
-            app:cardCornerRadius="8dp"
-            app:cardUseCompatPadding="true"
-            app:cardElevation="8dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:orientation="vertical"
-                android:gravity="center">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/asdfghj"
-                    />
-
-
-
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
             android:id="@+id/cardhome"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:layout_row="1"
+            android:layout_row="0"
             android:layout_column="0"
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp"
@@ -129,6 +64,7 @@
                     />
 
 
+
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
@@ -141,7 +77,7 @@
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:layout_row="1"
+            android:layout_row="0"
             android:layout_column="1"
             app:cardCornerRadius="8dp"
             app:cardUseCompatPadding="true"
@@ -153,6 +89,7 @@
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:orientation="vertical"
                 android:gravity="center">
+
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -167,8 +104,6 @@
                     android:textColor="@color/black"
 
                     />
-
-
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
@@ -180,7 +115,7 @@
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:layout_row="2"
+            android:layout_row="1"
             android:layout_column="0"
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp"
@@ -207,6 +142,76 @@
 
                     />
 
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardroombook"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="fill"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_row="1"
+            android:layout_column="1"
+            app:cardCornerRadius="8dp"
+            app:cardUseCompatPadding="true"
+            app:cardElevation="8dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/asdfghj"
+                    />
+
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/paymenthistory"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="fill"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_row="2"
+            android:layout_column="0"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:orientation="vertical"
+                android:gravity="center">
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_history_24"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Payment History"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+
+                    />
 
             </LinearLayout>
 

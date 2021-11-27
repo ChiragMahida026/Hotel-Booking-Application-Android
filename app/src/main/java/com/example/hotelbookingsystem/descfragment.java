@@ -1,5 +1,6 @@
 package com.example.hotelbookingsystem;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,33 +14,43 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.hotelbookingsystem.Model.roommodel;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class descfragment extends Fragment {
 
 
     NavController navController;
-    String quantity = "0";
+    int quantity = 0;
     FirebaseFirestore firestore;
     Button add, sub, order;
     TextView roomname, roomdescription, roomprices, roomavability, orderINFO;
-    String roomnames, roomdescriptions, imageURL;
+    String roomnames, roomdescriptions, imageURL,roomid;
     ImageView imagegholder;
     int price = 0;
-    int quan = 0;
+    FirebaseAuth fAuth;
+    FirebaseUser user;
+    ProgressDialog pd;
+    CheckBox checkbox1;
 
     int totalPrice = 0;
 
@@ -47,8 +58,7 @@ public class descfragment extends Fragment {
 
     }
 
-    public descfragment(String title, String editdescs, String editroomava, String editprice, String image) {
-
+    public descfragment(String title, String editdescs, int editroomava, int editprice, String image) {
     }
 
 
@@ -75,8 +85,13 @@ public class descfragment extends Fragment {
         navController = Navigation.findNavController(view);
         order = view.findViewById(R.id.orderdetail);
         orderINFO = view.findViewById(R.id.orderINFO);
+        checkbox1 = view.findViewById(R.id.checkbox1);
+        fAuth = FirebaseAuth.getInstance();
+        user = fAuth.getCurrentUser();
 
+        pd=new ProgressDialog(getContext());
 
+        roomid = descfragmentArgs.fromBundle(getArguments()).getRoomid();
         roomnames = descfragmentArgs.fromBundle(getArguments()).getRoomname();
         imageURL = descfragmentArgs.fromBundle(getArguments()).getImageurl();
         roomdescriptions = descfragmentArgs.fromBundle(getArguments()).getRoomdescription();
@@ -86,170 +101,132 @@ public class descfragment extends Fragment {
         Glide.with(view.getContext()).load(imageURL).into(imagegholder);
         roomname.setText(roomnames + " $" + String.valueOf(price));
         roomdescription.setText(roomdescriptions);
+
+        //fetching recent quantity and display
+        firestore.collection("Notice").document(roomid).addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(DocumentSnapshot value,FirebaseFirestoreException error) {
+                roommodel roommodel=value.toObject(roommodel.class);
+                quantity=roommodel.getQuantity();
+                roomavability.setText(String.valueOf(quantity));
+
+                totalPrice=price*quantity;
+                orderINFO.setText(String.valueOf("Total Price is " + totalPrice));
+            }
+        });
+
+        checkbox1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(checkbox1.isChecked())
+                {
+                    totalPrice=(price*quantity)+20;
+                    orderINFO.setText(String.valueOf("Total Price is " + totalPrice));
+
+                }
+                else
+                {
+                    totalPrice = quantity * price;
+                    orderINFO.setText(String.valueOf("Total Price is " + totalPrice));
+                }
+            }
+        });
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (quantity == 3) {
+
+                    Toast.makeText(getContext(), "Cant Book More than 3", Toast.LENGTH_SHORT).show();
+                    roomavability.setText(String.valueOf(quantity));
+
+                } else {
+                    quantity++;
+                    roomavability.setText(String.valueOf(quantity));
+
+                    // showing the price
+                    totalPrice = quantity * price;
+
+                    orderINFO.setText(String.valueOf("Total Price is " + totalPrice));
+                    //updating quantities
+                    firestore.collection("Notice").document(roomid).update("quantity",quantity).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+
+                        }
+                    });
+                }
+
+            }
+
+        });
+
+        sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (quantity == 0) {
+
+                    Toast.makeText(getContext(), "Nothing in Cart", Toast.LENGTH_SHORT).show();
+                    roomavability.setText(String.valueOf(quantity));
+                    quantity = 0;
+                    totalPrice = 0;
+
+                }
+                else {
+                    quantity--;
+                    roomavability.setText(String.valueOf(quantity));
+
+                    // showing the price
+                    totalPrice = quantity * price;
+                    orderINFO.setText(String.valueOf("Total Price is " + totalPrice));
+
+
+                    //updating quantity
+                    firestore.collection("Notice").document(roomid).update("quantity", quantity).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(Task<Void> task) {
+
+                        }
+                    });
+                }
+            }
+        });
+
+        order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (quantity == 0) {
+                    navController.navigate(R.id.action_descfragment_to_recfragment);
+                    Toast.makeText(getContext(), "You did not Booking " + roomnames, Toast.LENGTH_SHORT).show();
+                } else {
+                    AddToCart();
+                    descfragmentDirections.ActionDescfragmentToRecfragment
+                            action = descfragmentDirections.actionDescfragmentToRecfragment();
+                    action.setRoomquantity(quantity);
+                    navController.navigate(action);
+                    Toast.makeText(getContext(), "You've Booking " + roomnames, Toast.LENGTH_SHORT).show();
+                }
+            }
+            private void AddToCart() {
+
+                HashMap<String, Object> hashMap = new HashMap<>();
+                hashMap.put("roomname", roomnames);
+                hashMap.put("quantity", quantity);
+                hashMap.put("totalprice", totalPrice);
+                hashMap.put("roomid", roomid);
+                hashMap.put("imageURL", imageURL);
+
+//           creating new collection for cart
+                firestore.collection("Cart").document(roomnames).set(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(Task<Void> task) {
+                        pd.setMessage("Adding");
+                    }
+
+                });
+            }
+        });
     }
-
-
-//        firestore.collection("Notice").document().addSnapshotListener(new EventListener<DocumentSnapshot>() {
-//            @Override
-//            public void onEvent(DocumentSnapshot value, FirebaseFirestoreException error) {
-//                roommodel roommodel = value.toObject(roommodel.class);
-//                quantity = roommodel.getEditroomava();
-//                roomavability.setText(String.valueOf(quantity));
-//
-//                //convert String into integer
-//                quan = Integer.parseInt(quantity);
-//               //                String.valueOf(Integer.parseInt(t1) * Integer.parseInt(m1))
-//
-//                totalPrice = quan*price;
-//                orderINFO.setText(String.valueOf("Total Price is " + totalPrice));
-//
-//
-//                if (quan == 0) {
-//
-//
-//                    firestore.collection("Cart").document(roomnames).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
-//                        @Override
-//                        public void onComplete(Task<Void> task) {
-//
-//                        }
-//                    });
-//
-//                }
-//
-//            }
-//        });
-//
-//
-//        add.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                if (quan == 10) {
-//
-//                    Toast.makeText(getContext(), "Cant Order More than 10", Toast.LENGTH_SHORT).show();
-//                    roomavability.setText(String.valueOf(quantity));
-//
-//                } else {
-//
-//
-//                    quan++; // quantity = quantity+1; similar
-//                    roomavability.setText(String.valueOf(quantity));
-//
-//                    // showing the price
-//                    totalPrice = quan * price;
-//                    orderINFO.setText(String.valueOf("Total Price is " + totalPrice));
-//
-//                    //updating quantities
-//                    firestore.collection("Notice").document().update("quantity", quantity).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                        @Override
-//                        public void onComplete(Task<Void> task) {
-//
-//                        }
-//                    });
-//
-//                }
-//
-//            }
-//        });
-//
-//        sub.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                if (quan == 0) {
-//
-//                    Toast.makeText(getContext(), "Nothing in Cart", Toast.LENGTH_SHORT).show();
-//                    roomavability.setText(String.valueOf(quantity));
-//                    quan = 0;
-//                    totalPrice = 0;
-//
-//                } else {
-//
-//
-//
-//                    quan--;
-//                    roomavability.setText(String.valueOf(quantity));
-//
-//                    // showing the price
-//                    totalPrice = quan * price;
-//                    orderINFO.setText(String.valueOf("Total Price is " + totalPrice));
-//
-//
-//                    //updating quantity
-//                    firestore.collection("Notice").document().update("quantity", quantity).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                        @Override
-//                        public void onComplete(Task<Void> task) {
-//
-//                        }
-//                    });
-//                }
-//            }
-//        });
-//
-//        order.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//
-//                if (quan == 0) {
-//
-//                    navController.navigate(R.id.action_descfragment_to_recfragment);
-//                    Toast.makeText(getContext(), "You did not order " + roomnames, Toast.LENGTH_SHORT).show();
-//
-//
-//
-//                } else {
-//                    AddToCart();
-//
-//                    descfragmentDirections.actionDescfragmentToRecfragment
-//                            action = descfragmentDirections.actionDescfragmentToRecfragment();
-//
-//                    action.setQuantity(quantity);
-//                    navController.navigate(action);
-//                    Toast.makeText(getContext(), "You've ordered " + name, Toast.LENGTH_SHORT).show();
-//
-//
-//
-//                }
-//
-//            }
-//        });
-//
-//
-//    }
-
-//        public void onBackPressed ()
-//        {
-//            AppCompatActivity activity = (AppCompatActivity) getContext();
-//            activity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, new recfragment()).addToBackStack(null).commit();
-//
-//        }
-//    private void AddToCart() {
-//
-//
-//
-//        HashMap<String, Object> hashMap = new HashMap<>();
-//        hashMap.put("roomname", roomnames);
-//        hashMap.put("quantity", quan);
-//        hashMap.put("totalprice", totalPrice);
-//        hashMap.put("imageURL", imageURL);
-//
-//
-//
-//
-//
-////           creating new collection for cart
-//        firestore.collection("Cart").document().set(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-//            @Override
-//            public void onComplete(Task<Void> task) {
-//
-//
-//
-//            }
-//        });
-//
-//
-//
-//
-//    }
-    }
+}

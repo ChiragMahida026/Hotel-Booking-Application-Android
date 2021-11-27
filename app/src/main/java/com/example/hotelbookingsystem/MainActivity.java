@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     CardView carduserprofile;
     CardView cardchangepassword;
     CardView cardroombook;
+    CardView CardPayment;
 
 
     private  long backpresstime;
@@ -63,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         carduserprofile=findViewById(R.id.carduserprofile);
         cardchangepassword=findViewById(R.id.resetpassword);
         cardroombook=findViewById(R.id.cardroombook);
+        CardPayment=findViewById(R.id.paymenthistory);
         fauth=FirebaseAuth.getInstance();
         FirebaseFirestore fstore=FirebaseFirestore.getInstance();
 
@@ -92,13 +94,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        cardroombook.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent=new Intent(MainActivity.this,Activitysinglebed.class);
-//                startActivity(intent);
-//            }
-//        });
+        CardPayment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,PaymentlistView.class);
+                startActivity(intent);
+            }
+        });
 
         cardchangepassword.setOnClickListener(new View.OnClickListener() {
             @Override

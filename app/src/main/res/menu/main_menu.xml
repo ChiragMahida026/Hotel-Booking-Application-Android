@@ -1,55 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_baseline_home_24"
-            android:title="Home" />
 
         <item
-            android:id="@+id/nav_cycle"
-            android:icon="@drawable/ic_baseline_folder_24"
-            android:title="Cycling" />
-
-        <item
-            android:id="@+id/nav_bus"
-            android:icon="@drawable/ic_baseline_backup_24"
-            android:title="Bus" />
-
-        <item
-            android:id="@+id/nav_plane"
-            android:icon="@drawable/ic_baseline_star_24"
-            android:title="Plane" />
-    </group>
-
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_home2"
-            android:icon="@drawable/ic_baseline_home_24"
-            android:title="Home2" />
-
-        <item
-            android:id="@+id/nav_cycle2"
-            android:icon="@drawable/ic_baseline_folder_24"
-            android:title="Cycling2" />
-
-    </group>
-
-    <item
-        android:title="Communicatioe">
-        <menu>
-            <item
-                android:id="@+id/nav_cycle3"
-                android:icon="@drawable/ic_baseline_folder_24"
-                android:title="Cycling2" />
-
-            <item
-                android:id="@+id/nav_bus3"
-                android:icon="@drawable/ic_baseline_backup_24"
-                android:title="Bus2" />
-        </menu>
-
-    </item>
+            android:id="@+id/search_bar"
+            android:icon="@drawable/ic_baseline_search_24"
+            android:title="Serch Data"
+            app:showAsAction="always"
+            app:actionViewClass="android.widget.SearchView"/>
 
 </menu>
