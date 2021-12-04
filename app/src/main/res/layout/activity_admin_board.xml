@@ -5,18 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/cut_card_background"
+    android:backgroundTint="@color/teal_700"
     tools:context=".ActivityAdminBoard">
 
     <TextView
+        android:id="@+id/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textview"
-        android:text="Admin Dashboard"
-        android:textSize="30sp"
-        android:textStyle="bold"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
+        android:text="Admin \nDashboard"
         android:textColor="@color/black"
-        android:layout_margin="12dp"
-        />
+        android:textSize="25sp"
+        android:textStyle="bold" />
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -28,8 +31,8 @@
         >
         <androidx.cardview.widget.CardView
             android:id="@+id/cardhome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
@@ -47,18 +50,11 @@
                 android:gravity="center">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_home_24"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/asdfghj"
                     />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Home"
-                    android:textSize="16sp"
-                    android:textColor="@color/black"
 
-                    />
 
 
             </LinearLayout>
@@ -66,8 +62,8 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
@@ -85,18 +81,11 @@
                 android:gravity="center">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_home_24"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/ieutyeuityeiutiuet"
                     />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Home"
-                    android:textSize="16sp"
-                    android:textColor="@color/black"
 
-                    />
 
 
             </LinearLayout>
@@ -104,8 +93,8 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
@@ -125,12 +114,12 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_home_24"
+                    android:src="@drawable/ic_baseline_graphic_eq_24"
                     />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Home"
+                    android:text="Show Graph"
                     android:textSize="16sp"
                     android:textColor="@color/black"
 
@@ -164,7 +153,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/shoppingcart"
+                    android:src="@drawable/ic_baseline_edit_24"
                     />
                 <TextView
                     android:layout_width="wrap_content"
@@ -182,8 +171,8 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/carduserprofile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
@@ -221,8 +210,8 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardlogout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"

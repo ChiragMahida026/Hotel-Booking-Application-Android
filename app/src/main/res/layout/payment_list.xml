@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="wrap_content"
     android:layout_marginEnd="8dp"
     android:layout_marginStart="8dp"
     android:layout_marginTop="8dp"
-    app:cardBackgroundColor="#FFFFE8">
+    app:cardBackgroundColor="#FFFFE8"
+    >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,17 +15,17 @@
         android:padding="8dp">
 
         <TextView
-            android:id="@+id/text_view_title"
+            android:id="@+id/text_view_titles"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_toStartOf="@id/text_view_priority"
+            android:layout_toStartOf="@id/text_view_prioritys"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="Name"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
         <TextView
-            android:id="@+id/text_view_priority"
+            android:id="@+id/text_view_prioritys"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -33,20 +34,21 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <TextView
-            android:id="@+id/text_view_description"
+            android:id="@+id/text_view_descriptions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/text_view_title"
+            android:layout_below="@id/text_view_titles"
             android:layout_alignParentStart="true"
             android:text="Description" />
 
         <TextView
-            android:id="@+id/text_view_Email"
+            android:id="@+id/text_view_Emails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/text_view_description"
+            android:layout_below="@id/text_view_descriptions"
             android:layout_alignParentStart="true"
             android:text="Email" />
     </RelativeLayout>
+
 
 </androidx.cardview.widget.CardView>

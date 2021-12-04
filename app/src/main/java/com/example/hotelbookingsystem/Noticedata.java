@@ -117,4 +117,3 @@ public class Noticedata {
         this.time = time;
     }
 }
-

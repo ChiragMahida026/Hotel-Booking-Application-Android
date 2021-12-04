@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
+import org.w3c.dom.Text;
+
 public class NoteAdapter extends FirestoreRecyclerAdapter<Note, NoteAdapter.NoteHolder> {
     public NoteAdapter(@NonNull FirestoreRecyclerOptions<Note> options) {
         super(options);
@@ -22,6 +24,7 @@ public class NoteAdapter extends FirestoreRecyclerAdapter<Note, NoteAdapter.Note
         holder.name.setText(model.getName());
         holder.address.setText(model.getAddress());
         holder.phone.setText(model.getPhone());
+        holder.email.setText(model.getEmail());
     }
 
     @NonNull
@@ -32,16 +35,24 @@ public class NoteAdapter extends FirestoreRecyclerAdapter<Note, NoteAdapter.Note
         return new NoteHolder(v);
     }
 
+    public void deleteItem(int position)
+    {
+        getSnapshots().getSnapshot(position).getReference().delete();
+
+    }
+
     class NoteHolder extends RecyclerView.ViewHolder {
         TextView name;
         TextView address;
         TextView phone;
+        TextView email;
 
         public NoteHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.text_view_title);
             address = itemView.findViewById(R.id.text_view_description);
             phone = itemView.findViewById(R.id.text_view_priority);
+            email = itemView.findViewById(R.id.text_view_Email);
         }
     }
 }

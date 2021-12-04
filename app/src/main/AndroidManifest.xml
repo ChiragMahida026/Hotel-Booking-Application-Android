@@ -4,7 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -15,6 +16,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HotelBookingSystem"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".Addcustomerdetailsatreceptionst"
+            android:exported="false" />
+        <activity
+            android:name=".MapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Mainroomsadmin"
+            android:exported="false" />
         <activity
             android:name=".PaymentlistView"
             android:exported="false" />
@@ -52,6 +62,9 @@
             android:name=".PaymentActivity"
             android:exported="true" />
         <activity
+            android:name=".adminuserprofile"
+            android:exported="true" />
+        <activity
             android:name=".EditAdminProfileActivity"
             android:exported="true" />
         <activity
@@ -79,6 +92,12 @@
             android:name=".MainActivity"
             android:exported="true" />
 
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAC_jGV0248C6zgTqbiRrgcJHANCm8iimQ" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.razorpay.ApiKey"
             android:value="rzp_test_9e5AI2uXYf5RPo" />

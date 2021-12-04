@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -33,6 +34,7 @@ public class reUserprofile extends AppCompatActivity {
     ImageView profileImage;
     StorageReference storageReference;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,13 +52,6 @@ public class reUserprofile extends AppCompatActivity {
         storageReference = FirebaseStorage.getInstance().getReference();
         editbtn = findViewById(R.id.editbtn);
 
-        StorageReference profileRef = storageReference.child("users/" + fAuth.getCurrentUser().getUid() + "/profile.jpg");
-        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Picasso.get().load(uri).into(profileImage);
-            }
-        });
 
         userId = fAuth.getCurrentUser().getUid();
         DocumentReference documentReference = fstore.collection("users").document(userId);
@@ -64,6 +59,8 @@ public class reUserprofile extends AppCompatActivity {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
+
+                Glide.with(getApplicationContext()).load(value.get("image")).into(profileImage);
                 username.setText(value.getString("name"));
                 usermail.setText(value.getString("email"));
                 userphone.setText(value.getString("phone"));

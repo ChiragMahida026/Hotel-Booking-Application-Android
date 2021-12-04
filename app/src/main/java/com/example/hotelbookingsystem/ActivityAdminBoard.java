@@ -62,14 +62,14 @@ public class ActivityAdminBoard extends AppCompatActivity {
         carduserprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),Userprofile.class));
+                startActivity(new Intent(getApplicationContext(),adminuserprofile.class));
             }
         });
 
         cardaddroom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),AddRooms.class));
+                startActivity(new Intent(getApplicationContext(),Mainroomsadmin.class));
             }
         });
 

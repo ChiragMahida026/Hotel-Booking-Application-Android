@@ -4,18 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".recfragment">
+    tools:context=".Mainroomsadmin">
 
-    <!-- TODO: Update blank fragment layout -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recview"
+        android:id="@+id/recviewss"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
     <com.getbase.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:id="@+id/float1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="30dp"
@@ -23,20 +22,5 @@
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
         android:src="@drawable/ic_baseline_edit_24" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="65dp"
-        android:layout_marginRight="53dp"
-        android:text=""
-        android:elevation="16dp"
-        android:id="@+id/quantityOnfAB"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-
-        android:textSize="20sp"/>
 
 </RelativeLayout>

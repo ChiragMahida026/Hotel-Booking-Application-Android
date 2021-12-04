@@ -21,6 +21,8 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
+                android:background="#40B7C6"
+                android:backgroundTint="#40838C"
                 android:src="@drawable/user_image"/>
             <TextView
                 android:layout_marginTop="10dp"

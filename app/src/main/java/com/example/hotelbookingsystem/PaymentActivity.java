@@ -1,8 +1,10 @@
 package com.example.hotelbookingsystem;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.se.omapi.Session;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,6 +34,8 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
+
 
 public class PaymentActivity extends AppCompatActivity implements PaymentResultListener {
 
@@ -41,7 +45,7 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
     FirebaseAuth fAuth;
     FirebaseFirestore fstore;
     String userId;
-    String namesss,emailsss,payment;
+    String userphones,emailsss,payment;
 
 
     @Override
@@ -63,13 +67,16 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
         usermail=findViewById(R.id.usermail);
         userphone=findViewById(R.id.userphone);
         userId = fAuth.getCurrentUser().getUid();
+
         DocumentReference documentReference = fstore.collection("users").document(userId);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
                 userphone.setText(value.getString("phone"));
+                Toast.makeText(getApplicationContext(), userphone.getText().toString(), Toast.LENGTH_SHORT).show();
                 usermail.setText(value.getString("email"));
+                Toast.makeText(getApplicationContext(), usermail.getText().toString(), Toast.LENGTH_SHORT).show();
             }
         });
         editTextPayment.setText(roomcartFragment.getValues());
@@ -115,11 +122,11 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
 
             JSONObject preFill = new JSONObject();
 
-            namesss=userphone.getText().toString();
+            userphones=userphone.getText().toString();
             emailsss=usermail.getText().toString();
 
             preFill.put("email", emailsss);
-            preFill.put("contact",namesss );
+            preFill.put("contact",userphones );
             options.put("prefill", preFill);
 
             co.open(activity, options);
@@ -136,14 +143,14 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
         Toast.makeText(this, "Payment successfully done! ", Toast.LENGTH_SHORT).show();
 
 
-                    DocumentReference documentReference = fstore.collection("Payments").document(fAuth.getCurrentUser().getUid());
+                    DocumentReference documentReference = fstore.collection("Payments").document(s);
                     Map<String, Object> payments = new HashMap<>();
                     payments.put("PaymentId",s);
                     payments.put("Payment",payment);
                     payments.put("emails",emailsss);
-                    payments.put("name",namesss);
+                    payments.put("name",userphones);
+//                    payments.put("usernamesss",fAuth.getCurrentUser().getUid());
                     documentReference.set(payments);
-
     }
 
     @Override
@@ -154,6 +161,32 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
         } catch (Exception e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
+
+    }
+
+    @Override
+    public void onBackPressed() {
+
+
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setMessage("Are you sure you want to Exit?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent=new Intent(getApplicationContext(),MainActivity.class);
+                        startActivity(intent);
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alertDialog=builder.create();
+        alertDialog.show();
 
     }
 }

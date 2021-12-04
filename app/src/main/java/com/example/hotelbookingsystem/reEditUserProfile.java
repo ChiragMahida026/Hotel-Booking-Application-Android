@@ -1,13 +1,14 @@
 package com.example.hotelbookingsystem;
 
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
+
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
+
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -17,17 +18,24 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.squareup.picasso.Picasso;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,10 +47,14 @@ public class reEditUserProfile extends AppCompatActivity {
     FirebaseFirestore firestore;
     ImageView profileImageView;
     FirebaseUser user;
+    private Bitmap bitmap;
     FirebaseStorage storage;
     StorageReference storageReference;
-    Uri imageuri;
-    ActivityResultLauncher<String> mgetContent;
+    private final int REQ=1;
+    private ProgressDialog pd;
+    String downloadUrl = "";
+
+    String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +63,7 @@ public class reEditUserProfile extends AppCompatActivity {
 
         editname = findViewById(R.id.editname);
         editemail = findViewById(R.id.editemail);
-        profileImageView = (ImageView) findViewById(R.id.uimage);
+        profileImageView = findViewById(R.id.uimage);
         editphone = findViewById(R.id.editphone);
         fAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
@@ -60,6 +72,7 @@ public class reEditUserProfile extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         btnsavedata = findViewById(R.id.btnsavedata);
         storageReference = FirebaseStorage.getInstance().getReference();
+        pd=new ProgressDialog(this);
 
 
         Intent data = getIntent();
@@ -76,119 +89,174 @@ public class reEditUserProfile extends AppCompatActivity {
         editemail.setEnabled(false);
         editphone.setEnabled(false);
 
-        StorageReference profileRef = storageReference.child("users/" + fAuth.getCurrentUser().getUid() + "/profile.jpg");
-        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Picasso.get().load(uri).into(profileImageView);
-            }
-        });
+
 
         profileImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent openGalleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(openGalleryIntent, 1000);
+                openGallery();
             }
         });
 
-        mgetContent = registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
+
+        userId = fAuth.getCurrentUser().getUid();
+        DocumentReference documentReference = firestore.collection("users").document(userId);
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
-            public void onActivityResult(Uri result) {
-                if (result != null) {
-                    profileImageView.setImageURI(result);
-                    imageuri = result;
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
 
-                }
+                Glide.with(getApplicationContext()).load(value.get("image")).into(profileImageView);
+
             }
-
         });
 
 
         btnsavedata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (editname.getText().toString().isEmpty() || editemail.getText().toString().isEmpty() || editaddress.getText().toString().isEmpty() || editphone.getText().toString().isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "one or many fields are empty", Toast.LENGTH_SHORT).show();
-                    return;
+                if(editemail.getText().toString().isEmpty())
+                {
+                    editemail.setError("Empty");
+                    editemail.requestFocus();
+
                 }
-                String email = editemail.getText().toString();
-                String names = editname.getText().toString();
-                String addresss = editaddress.getText().toString();
-                String phones = editphone.getText().toString();
+                else if(editname.getText().toString().isEmpty())
+                {
+                    editname.setError("Empty");
+                    editname.requestFocus();
 
-                user.updateEmail(email).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
+                }
+                else if(editaddress.getText().toString().isEmpty())
+                {
+                    editaddress.setError("Empty");
+                    editaddress.requestFocus();
 
-                        DocumentReference documentReference = firestore.collection("users").document(user.getUid());
-                        Map<String, Object> edited = new HashMap<>();
-                        edited.put("email", email);
-                        edited.put("name", names);
-                        edited.put("address", addresss);
-                        edited.put("phone", phones);
-                        documentReference.update(edited).addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void unused) {
+                }
+                else if(editphone.getText().toString().isEmpty())
+                {
+                    editphone.setError("Empty");
+                    editphone.requestFocus();
 
-                                Toast.makeText(getApplicationContext(), "Profile Updated", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(), ActivityreceptionistBoard.class));
-                                finish();
-                            }
-                        });
+                }
+                else if(bitmap == null)
+                {
+                    uploadData();
+                }
+                else
+                {
+                    uploadImage();
 
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+                }
 
-            }
+                }
 
         });
 
+    }
+    private void uploadData() {
+
+            //downloadUrl String call here
+            String email = editemail.getText().toString();
+            String names = editname.getText().toString();
+            String addresss = editaddress.getText().toString();
+            String phones = editphone.getText().toString();
+
+            user.updateEmail(email).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void unused) {
+                    DocumentReference documentReference = firestore.collection("users").document(user.getUid());
+                    Map<String, Object> edited = new HashMap<>();
+                    edited.put("email", email);
+                    edited.put("name", names);
+                    edited.put("image",downloadUrl);
+                    edited.put("address", addresss);
+                    edited.put("phone", phones);
+                    documentReference.update(edited).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+
+                            Toast.makeText(getApplicationContext(), "Profile Updated", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), ActivityreceptionistBoard.class));
+                            finish();
+                        }
+                    });
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    pd.dismiss();
+                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
+    private void uploadImage() {
+        pd.setMessage("Uploadig......");
+        pd.show();
+        ByteArrayOutputStream baos=new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG,0,baos);
+        byte[] finalimg=baos.toByteArray();
+        final StorageReference filePath;
+        filePath=storageReference.child("Profile").child( finalimg+"jpg");
+        final UploadTask uploadTask=filePath.putBytes(finalimg);
+        uploadTask.addOnCompleteListener(reEditUserProfile.this, new OnCompleteListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                if(task.isSuccessful())
+                {
+                    uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            filePath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    downloadUrl=String.valueOf(uri);
+                                    uploadData();
+                                    Toast.makeText(getApplicationContext(), "Profile Updated", Toast.LENGTH_SHORT).show();
+
+                                }
+                            });
+                        }
+                    });
+                }
+                else
+                {
+
+                    Toast.makeText(reEditUserProfile.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @androidx.annotation.Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1000) {
-            if (resultCode == Activity.RESULT_OK) {
-                Uri imageUri = data.getData();
+        if(requestCode==REQ && resultCode==RESULT_OK)
+        {
 
-                //profileImage.setImageURI(imageUri);
-
-                uploadImageToFirebase(imageUri);
-
-
+            Uri uri=data.getData();
+            try {
+                bitmap=MediaStore.Images.Media.getBitmap(getContentResolver(),uri);
             }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+
+            profileImageView.setImageBitmap(bitmap);
+
         }
+    }
+
+    private void openGallery() {
+
+            Intent pickImage=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            startActivityForResult(pickImage,REQ);
 
     }
 
-    private void uploadImageToFirebase(Uri imageUri) {
-        // upload image to firebase storage
-        final StorageReference fileRef = storageReference.child("users/" + fAuth.getCurrentUser().getUid() + "/profile.jpg");
-        fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        Picasso.get().load(uri).into(profileImageView);
-                    }
-                });
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getApplicationContext(), "Failed.", Toast.LENGTH_SHORT).show();
-            }
-        });
 
 
-    }
 }

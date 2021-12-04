@@ -38,9 +38,11 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomListHolder
     @Override
     public void onBindViewHolder(@NonNull RoomListHolder holder, int position) {
 
+        //showing customer card of all data here
+
         holder.nametext.setText(roommodelList.get(position).getTitle());
-        holder.coursetext.setText(roommodelList.get(position).getEditdescs());
-        holder.nametext.setText(roommodelList.get(position).getData());
+        holder.coursetext.setText(String.valueOf(roommodelList.get(position).getEditdescs()));
+       holder.emailtext.setText( String.valueOf(roommodelList.get(position).getEditprice()+"₹"));
 
         Glide.with(holder.itemView.getContext()).load(roommodelList.get(position).getImage()).into(holder.img1);
     }

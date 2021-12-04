@@ -13,141 +13,258 @@
         android:scrollbars="none"
         >
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardElevation="8dp"
-        app:cardCornerRadius="6dp"
-        android:layout_centerInParent="true"
-        android:layout_margin="10dp">
-
-        <RelativeLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            app:cardElevation="8dp"
+            app:cardCornerRadius="6dp"
+            android:layout_centerInParent="true"
+            android:layout_margin="10dp">
 
-            <ImageView
-                android:id="@+id/imagegholder"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="290dp"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/ic_launcher_background" />
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/nameholder"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/imagegholder"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="10dp"
-                android:text="Room Name"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/courseholder"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/nameholder"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:text="cofee detail" />
-
-            <TextView
-                android:id="@+id/emailholder"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/courseholder"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:text="cofee detail" />
-
-            <TextView
-                android:id="@+id/roomprice"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/emailholder"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:text="cofee detail" />
-
-            <LinearLayout
-                android:id="@+id/linear"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/roomprice"
-                android:orientation="horizontal">
-
-                <Button
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:text="-"
-                    android:id="@+id/decrementcoffee"/>
+                <ImageView
+                    android:id="@+id/imagegholder"
+                    android:layout_width="match_parent"
+                    android:layout_height="290dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/ic_launcher_background" />
 
                 <TextView
+                    android:id="@+id/nameholder"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0"
-                    android:id="@+id/quantityDETAILnUMBER"
-                    android:textSize="18sp"
+                    android:layout_below="@id/imagegholder"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Room Name"
                     android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/courseholder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/nameholder"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="cofee detail" />
+
+                <TextView
+                    android:id="@+id/emailholder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/courseholder"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="cofee detail" />
+
+                <TextView
+                    android:id="@+id/roomprice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/emailholder"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="cofee detail" />
+
+                <TextView
+                    android:id="@+id/rf1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/roomprice"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Amenities"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:id="@+id/tvteam1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"/>
+                    android:layout_below="@+id/rf1"
+                    android:src="@drawable/ic_baseline_wifi_24"
+                    />
+
+                <TextView
+                    android:id="@+id/tvteam2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvteam1"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="-23dp"
+                    android:text=": Free Wifi and High-spped Internet"
+                    android:textColor="@color/teal_700" />
+
+                <ImageView
+                    android:id="@+id/tvteam3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvteam1"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/ic_baseline_view_comfy_24"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:id="@+id/demo1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvteam2"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="10dp"
+                    android:text=": Room size 8sq meters minimum"
+                    android:textColor="@color/teal_700"
+                    android:visibility="invisible" />
+
+                <ImageView
+                    android:id="@+id/new1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvteam3"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/ic_baseline_view_comfy_24"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:id="@+id/new2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/demo1"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="10dp"
+                    android:text=": Room size 16sq meters minimum"
+                    android:textColor="@color/teal_700"
+                    android:visibility="invisible" />
+
+                <LinearLayout
+                    android:id="@+id/linear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@id/new2"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:text="-"
+                        android:id="@+id/decrementcoffee"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:id="@+id/quantityDETAILnUMBER"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"/>
+
+                    <Button
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:text="+"
+                        android:id="@+id/incrementcoffee"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/rf3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/linear"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Add extra to room"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <CheckBox
+                    android:id="@+id/checkbox1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rf3"
+                    android:layout_marginLeft="20dp"
+                    android:text="Add extra bed sheet"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/text67"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/checkbox1"
+                    android:layout_centerHorizontal="true"
+                    android:text="Pick Date To Book Room"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
 
                 <Button
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:text="+"
-                    android:id="@+id/incrementcoffee"/>
+                    android:id="@+id/datepick"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text67"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:text="Choose Date" />
+
+                <TextView
+                    android:id="@+id/text68"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/datepick"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:visibility="invisible"
+                    android:layout_marginBottom="10dp"
+                    android:text="Start Date End Date Show"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/orderINFO"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text68"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:text="Total is "
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="italic" />
 
 
+                <Button
+                    android:id="@+id/orderdetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/orderINFO"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:backgroundTint="@android:color/holo_red_dark"
+                    android:text="BOOK" />
 
-    </LinearLayout>
+            </RelativeLayout>
 
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/linear"
-                android:id="@+id/checkbox1"
-                android:layout_marginLeft="20dp"
-                android:text="Hello"
-                android:textColor="@color/black"
-                />
-
-            <TextView
-                android:id="@+id/orderINFO"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/checkbox1"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
-                android:text="Total is "
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="italic" />
-
-
-            <Button
-                android:id="@+id/orderdetail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/orderINFO"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="20dp"
-                android:backgroundTint="@android:color/holo_red_dark"
-                android:text="BOOK" />
-
-</RelativeLayout>
-
-    </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
     </ScrollView>
 
 </RelativeLayout>

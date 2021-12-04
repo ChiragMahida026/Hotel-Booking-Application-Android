@@ -44,7 +44,7 @@ public class AddRooms extends AppCompatActivity {
 
     private final int REQ=1;
     private Bitmap bitmap;
-//    private DatabaseReference reference;
+    //    private DatabaseReference reference;
     FirebaseFirestore firestore;
     private StorageReference storageReference;
     String downloadUrl = "";
@@ -120,7 +120,7 @@ public class AddRooms extends AppCompatActivity {
 
 
 //        reference=reference.child("Notice");
-        firestore.collection("Notice").get();
+//        firestore.collection("Notice").get();
 
         String title=text.getText().toString();
         String editdescs=editdesc.getText().toString();

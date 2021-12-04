@@ -153,12 +153,32 @@ public class MainActivity extends AppCompatActivity {
         cardlogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 SharedPreferences.Editor editor=sharedPreferences.edit();
                 editor.clear();
                 editor.commit();
+
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                Intent intent=new Intent(getApplicationContext(),ActivitySplash.class);
+                startActivity(intent);
                 finish();
+                Intent a = new Intent(Intent.ACTION_MAIN);
+                a.addCategory(Intent.CATEGORY_HOME);
+                a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(a);
+                Toast.makeText(getApplicationContext(), "Exist", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        cardroombook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+                startActivity(new Intent(getApplicationContext(),MapActivity.class));
             }
         });
 

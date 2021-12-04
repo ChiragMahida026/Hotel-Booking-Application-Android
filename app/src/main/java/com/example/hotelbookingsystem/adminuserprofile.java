@@ -1,10 +1,7 @@
 package com.example.hotelbookingsystem;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,18 +12,14 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.squareup.picasso.Picasso;
 
-public class Userprofile extends AppCompatActivity {
+public class adminuserprofile extends AppCompatActivity {
 
     TextView username, usermail, userphone, usercity, useraddress;
     FirebaseAuth fAuth;
@@ -72,7 +65,7 @@ public class Userprofile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "click Update Profile", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(getApplicationContext(), EditUserProfile.class);
+                Intent i = new Intent(getApplicationContext(), EditAdminProfileActivity.class);
                 i.putExtra("name", username.getText().toString());
                 i.putExtra("email", usermail.getText().toString());
                 i.putExtra("phone", userphone.getText().toString());

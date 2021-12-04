@@ -3,25 +3,43 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/HotelBookingSystem/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.26614583333333336" />
         <entry key="..\:/HotelBookingSystem/app/src/main/res/drawable/ic_baseline_edit_attributes_24.xml" value="0.26614583333333336" />
+        <entry key="..\:/HotelBookingSystem/app/src/main/res/drawable/ic_baseline_graphic_eq_24.xml" value="0.26614583333333336" />
         <entry key="..\:/HotelBookingSystem/app/src/main/res/drawable/ic_baseline_history_24.xml" value="0.26614583333333336" />
         <entry key="..\:/HotelBookingSystem/app/src/main/res/drawable/logout_icon.xml" value="0.26614583333333336" />
         <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/activity_activityreceptionist_board.xml" value="0.25" />
         <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/activity_activityresetpassword.xml" value="0.25" />
-        <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/activity_add_rooms.xml" value="0.25" />
-        <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/activity_admin_board.xml" value="0.25" />
+        <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/activity_add_rooms.xml" value="0.2" />
+        <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/activity_addcustomerdetailsatreceptionst.xml" value="0.264" />
+        <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/activity_admin_board.xml" value="0.264" />
+        <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/activity_admin_edit_profile.xml" value="0.24456521739130435" />
         <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/activity_edit_admin_profile.xml" value="0.25" />
         <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/activity_edit_user_profile.xml" value="0.25" />
         <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/activity_loginn.xml" value="0.25" />
-        <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/activity_main_activityss.xml" value="0.25" />
+        <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/activity_mainroomsadmin.xml" value="0.2" />
+        <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/activity_map.xml" value="0.25" />
+        <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/activity_payment.xml" value="0.25" />
         <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/activity_paymentlist_view.xml" value="0.2359375" />
+        <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/activity_re_edit_user_profile.xml" value="0.24456521739130435" />
+        <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/activity_registration.xml" value="0.25" />
+        <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/activity_roomshowinadmin.xml" value="0.23097826086956522" />
+        <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/activity_showcustomerdetails.xml" value="0.25" />
+        <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/activity_showing_rooms.xml" value="0.23097826086956522" />
+        <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/activity_userprofile.xml" value="0.24456521739130435" />
         <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/cartlistlayout.xml" value="0.25" />
-        <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/fragment_descfragment.xml" value="0.264" />
+        <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/fragment_descfragment.xml" value="0.3413940256045519" />
         <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/fragment_recfragment.xml" value="0.176" />
         <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/fragment_roomcart.xml" value="0.25" />
+        <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/map_activity.xml" value="0.1" />
+        <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/note_item.xml" value="0.23097826086956522" />
+        <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/payment_list.xml" value="0.2" />
         <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/roomcartlistlayout.xml" value="0.25" />
+        <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/singlerowadmin.xml" value="0.23097826086956522" />
         <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/singlerowdesign.xml" value="0.25" />
+        <entry key="..\:/HotelBookingSystem/app/src/main/res/layout/slider_item.xml" value="0.23097826086956522" />
         <entry key="..\:/HotelBookingSystem/app/src/main/res/menu/main_menu.xml" value="0.25" />
         <entry key="..\:/Users/Dhruv/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/drawable/bg_btn.xml" value="0.2203125" />
         <entry key="..\:/Users/Dhruv/AndroidStudioProjects/HotelBookingSystem/app/src/main/res/drawable/cut_card_background.xml" value="0.2203125" />

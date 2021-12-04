@@ -66,10 +66,18 @@
         <action
             android:id="@+id/action_roomcartFragment_to_paymentActivity"
             app:destination="@id/paymentActivity" />
+        <action
+            android:id="@+id/action_roomcartFragment_to_mainActivity"
+            app:destination="@id/mainActivity" />
     </fragment>
     <activity
         android:id="@+id/paymentActivity"
         android:name="com.example.hotelbookingsystem.PaymentActivity"
         android:label="activity_payment"
         tools:layout="@layout/activity_payment" />
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.hotelbookingsystem.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
 </navigation>

@@ -11,6 +11,7 @@
     <string name="create_new">Click here for register</string>
     <string name="forget">Forget Password?</string>
     <string name="not_register">already register?</string>
+    <string name="google_maps_key">AIzaSyAC_jGV0248C6zgTqbiRrgcJHANCm8iimQ</string>
     <string name="name">Name</string>
     <string name="editprofile">Edit Profile</string>
     <string name="ChangeProfile">Change Profile</string>

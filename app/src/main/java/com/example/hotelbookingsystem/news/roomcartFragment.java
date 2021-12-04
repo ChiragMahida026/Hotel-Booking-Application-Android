@@ -104,6 +104,8 @@ public class roomcartFragment extends Fragment {
                         totalOrderCost += Integer.parseInt(String.valueOf(saveTotalCost.get(i)));
                     }
                     orderSummary.setText("Total is "  +String.valueOf(totalOrderCost));
+
+
                     values=String.valueOf(totalOrderCost);
                     totalOrderCost = 0;
                     saveTotalCost.clear();
@@ -115,38 +117,48 @@ public class roomcartFragment extends Fragment {
         orderbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                int i= Integer.parseInt(String.valueOf(values));
+
+                if(i == 0)
+                {
+                    Toast.makeText(getContext(), "You can not Book Room", Toast.LENGTH_SHORT).show();
+                }
+                else {
+
 //                                reseting the quantities of coffies once order is placed.
+                    firestore.collection("Notice").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(Task<QuerySnapshot> task) {
 
-                firestore.collection("Notice").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(Task<QuerySnapshot> task) {
-
-                        if (task.isSuccessful()) {
-                            QuerySnapshot tasks = task.getResult();
-                            for (DocumentSnapshot ds: tasks.getDocuments()) {
-                                ds.getReference()
-                                        .update("quantity", 0);
+                            if (task.isSuccessful()) {
+                                QuerySnapshot tasks = task.getResult();
+                                for (DocumentSnapshot ds : tasks.getDocuments()) {
+                                    ds.getReference()
+                                            .update("quantity", 0);
+                                }
                             }
                         }
-                    }
-                });
-                // clearing the cart
+                    });
+                    // clearing the cart
 
-                firestore.collection("Cart").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete( Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            QuerySnapshot tasks = task.getResult();
+                    firestore.collection("Cart").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                QuerySnapshot tasks = task.getResult();
 
-                            for (DocumentSnapshot ds: tasks.getDocuments()) {
-                                ds.getReference()
-                                        .delete();
+                                for (DocumentSnapshot ds : tasks.getDocuments()) {
+                                    ds.getReference()
+                                            .delete();
+                                }
                             }
                         }
-                    }
-                });
-                navController.navigate(R.id.paymentActivity);
+                    });
 
+
+                    navController.navigate(R.id.paymentActivity);
+                }
 //                Toast.makeText(getContext(), "Order Placed", Toast.LENGTH_SHORT).show();
             }
 
