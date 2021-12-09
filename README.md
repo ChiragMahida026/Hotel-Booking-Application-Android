@@ -1,1 +1,1 @@
-# HotelBookingSystem
+# Hotel-Booking-Application-Android
